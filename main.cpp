@@ -9,7 +9,7 @@ struct Node {
     Node *next;
 };
 
-void output(Node *);
+void output(Node *);//function prototypes 
 void addfront(Node *);
 void deletenode(Node *);
 void insertnode(Node *);
@@ -25,9 +25,9 @@ int main() {
         Node *newVal = new Node;
         
         // adds node at head
-        if (!head) { // if this is the first node, it's the new head
+        if (!head) { 
             head = newVal;
-            addfront(newVal);
+            addfront(newVal);//call function
             newVal->value = tmp_val;
         }
         else { // its a second or subsequent node; place at the head
@@ -59,7 +59,7 @@ int main() {
     // at this point, delete current and reroute pointers
     if (current) {  // checks for current to be valid before deleting the node
         prev->next = current->next;
-        deletenode(current);
+        deletenode(current);//call function
     }
     output(head);
 
@@ -85,37 +85,40 @@ int main() {
         }
     //at this point, insert a node between prev and current
     Node * newnode = new Node;
-    insertnode(newnode);
+    insertnode(newnode);//call function
     newnode->next = current;
     prev->next = newnode;
     output(head);
 
     // deleting the linked list
-    current = head;
-    while (current) {
-        head = current->next;
-        delete current;
-        current = head;
-    }
+    deletelist(head);//call function
+
     head = nullptr;
     output(head);
 
     return 0;
 }
 
-void addfront (Node * NV){
+void addfront (Node * NV){//newValue to next to point to nullptr
     NV->next = nullptr;
 }
 
-void deletenode (Node * CU){
+void deletenode (Node * CU){//delete and then equal to nullptr
     delete CU;
     CU = nullptr;
 }
-void insertnode (Node * NM){
+void insertnode (Node * NM){//make newmode to value equal 10000
     NM->value = 10000;
     
 }
-
+void deletelist (Node * hd){//add in current to get the delete command and then delete the list 
+    Node * current = hd;
+    while (current) {
+        hd = current->next;
+        delete current;
+        current = hd;
+    }
+}
 void output(Node * hd) {
     if (!hd) {
         cout << "Empty list.\n";
