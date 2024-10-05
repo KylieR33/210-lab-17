@@ -1,4 +1,5 @@
 #include <iostream>
+// COMSC-210 | Lab 17 | Kylie Roxo
 using namespace std;
 
 const int SIZE = 7;  
@@ -58,8 +59,7 @@ int main() {
     // at this point, delete current and reroute pointers
     if (current) {  // checks for current to be valid before deleting the node
         prev->next = current->next;
-        delete current;
-        current = nullptr;
+        deletenode(current);
     }
     output(head);
 
@@ -85,7 +85,7 @@ int main() {
         }
     //at this point, insert a node between prev and current
     Node * newnode = new Node;
-    newnode->value = 10000;
+    insertnode(newnode);
     newnode->next = current;
     prev->next = newnode;
     output(head);
@@ -105,6 +105,15 @@ int main() {
 
 void addfront (Node * NV){
     NV->next = nullptr;
+}
+
+void deletenode (Node * CU){
+    delete CU;
+    CU = nullptr;
+}
+void insertnode (Node * NM){
+    NM->value = 10000;
+    
 }
 
 void output(Node * hd) {
