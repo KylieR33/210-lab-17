@@ -9,6 +9,10 @@ struct Node {
 };
 
 void output(Node *);
+void addfront(Node *);
+void deletenode(Node *);
+void insertnode(Node *);
+void deletelist(Node *);
 
 int main() {
     Node *head = nullptr;
@@ -22,7 +26,7 @@ int main() {
         // adds node at head
         if (!head) { // if this is the first node, it's the new head
             head = newVal;
-            newVal->next = nullptr;
+            addfront(newVal);
             newVal->value = tmp_val;
         }
         else { // its a second or subsequent node; place at the head
@@ -97,6 +101,10 @@ int main() {
     output(head);
 
     return 0;
+}
+
+void addfront (Node * NV){
+    NV->next = nullptr;
 }
 
 void output(Node * hd) {
